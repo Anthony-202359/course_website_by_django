@@ -1,0 +1,28 @@
+{% extends 'main/layout.html' %}
+{% block content %}
+<div class="container mt-5">
+  <h2>Dashboard</h2>
+  <p>Welcome, {{ user.username }}!</p>
+  <div class="alert alert-info">Your subscription: <strong>{{ subscription.plan|capfirst }}</strong></div>
+  <a href="{% url 'subscription' %}" class="btn btn-outline-primary mb-3">Change Subscription</a>
+  <h4>Available Courses</h4>
+  <div class="row">
+    {% for course in courses %}
+    <div class="col-md-4">
+      <div class="card mb-4">
+        {% if course.image %}
+        <img src="{{ course.image.url }}" class="card-img-top" alt="{{ course.title }}">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ course.title }}</h5>
+          <p class="card-text">{{ course.description|truncatewords:20 }}</p>
+          <a href="{% url 'course_detail' course.pk %}" class="btn btn-primary">View Course</a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p>No courses available for your subscription level yet.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %} 

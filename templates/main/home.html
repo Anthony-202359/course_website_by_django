@@ -1,0 +1,89 @@
+{% extends 'main/layout.html' %}
+{% block content %}
+<div class="container mt-5">
+  <div class="jumbotron bg-light p-5 rounded">
+    <h1 class="display-4">Welcome to Algo FX</h1>
+    <p class="lead">Your premier platform for mastering Forex trading. Learn from experts, trade with confidence, and achieve financial freedom.</p>
+    <hr class="my-4">
+    <p>Discover the secrets of successful Forex trading with our comprehensive courses designed for all skill levels.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Get Started</a>
+  </div>
+
+  <h2 class="mt-5 mb-4">Why Choose Algo FX?</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Expert-Led Courses</h5>
+          <p class="card-text">Learn from industry professionals with years of trading experience.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Flexible Learning</h5>
+          <p class="card-text">Access courses anytime, anywhere, and learn at your own pace.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Community Support</h5>
+          <p class="card-text">Join a community of traders and share insights and strategies.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="mt-5 mb-4">Featured Courses</h2>
+  <div class="row">
+    {% for course in courses %}
+    <div class="col-md-4">
+      <div class="card mb-4">
+        {% if course.image %}
+        <img src="{{ course.image.url }}" class="card-img-top" alt="{{ course.title }}">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ course.title }}</h5>
+          <p class="card-text">{{ course.description|truncatewords:20 }}</p>
+          <a href="{% url 'course_detail' course.pk %}" class="btn btn-primary">View Course</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <a href="{% url 'register' %}" class="btn btn-success">Get Started</a>
+</div>
+
+<div class="container mt-5">
+  <h2 class="mb-4">Testimonials</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <p class="card-text">"Algo FX transformed my trading skills. The courses are comprehensive and easy to follow."</p>
+          <footer class="blockquote-footer">John Doe, Trader</footer>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <p class="card-text">"The community support is incredible. I've learned so much from other traders."</p>
+          <footer class="blockquote-footer">Jane Smith, Investor</footer>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <p class="card-text">"The expert-led courses are worth every penny. Highly recommended!"</p>
+          <footer class="blockquote-footer">Mike Johnson, Forex Enthusiast</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} 

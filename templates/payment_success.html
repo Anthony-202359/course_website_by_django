@@ -1,0 +1,29 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h3 class="text-center">Payment Successful!</h3>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-check-circle text-success" style="font-size: 48px;"></i>
+                    </div>
+                    <h5 class="text-center">Transaction Details:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Transaction Reference: {{ transaction.tx_ref }}</li>
+                        <li class="list-group-item">Amount: NGN {{ transaction.amount }}</li>
+                        <li class="list-group-item">Status: {{ transaction.status }}</li>
+                    </ul>
+                    <div class="text-center mt-4">
+                        <a href="{% url 'dashboard' %}" class="btn btn-primary">Go to Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

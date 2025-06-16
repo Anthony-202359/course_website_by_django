@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="text-center">Payment Failed</h3>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-times-circle text-danger" style="font-size: 48px;"></i>
+                    </div>
+                    <p class="text-center text-danger">{{ message }}</p>
+                    <div class="text-center mt-4">
+                        <a href="{% url 'subscription' %}" class="btn btn-primary">Try Again</a>
+                        <a href="{% url 'dashboard' %}" class="btn btn-secondary">Go to Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

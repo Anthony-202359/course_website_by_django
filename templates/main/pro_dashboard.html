@@ -1,0 +1,48 @@
+{% extends 'main/layout.html' %}
+{% block content %}
+<div class="container mt-5">
+    <div class="alert alert-success">
+        <h2>Welcome to your Pro Dashboard!</h2>
+        <p>You now have access to all courses, including pro-exclusive content.</p>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Your Subscription</h5>
+                    <p class="card-text">Plan: <strong>{{ subscription.plan|capfirst }}</strong></p>
+                    <p class="card-text">Start Date: {{ subscription.start_date|date:"F d, Y" }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>Available Courses</h3>
+    <div class="row">
+        {% for course in courses %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                {% if course.image %}
+                <img src="{{ course.image.url }}" class="card-img-top" alt="{{ course.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ course.title }}</h5>
+                    <p class="card-text">{{ course.description|truncatewords:20 }}</p>
+                    <span class="badge {% if course.tier == 'pro' %}bg-danger{% elif course.tier == 'intermediate' %}bg-warning{% else %}bg-info{% endif %}">
+                        {{ course.tier|capfirst }}
+                    </span>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'course_detail' course.pk %}" class="btn btn-primary">View Course</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <p>No courses available at the moment.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %} 
