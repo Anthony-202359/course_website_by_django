@@ -1,89 +1,242 @@
 {% extends 'main/layout.html' %}
+
+{% block title %}Algo FX - Master Forex Trading{% endblock %}
+
 {% block content %}
-<div class="container mt-5">
-  <div class="jumbotron bg-light p-5 rounded">
-    <h1 class="display-4">Welcome to Algo FX</h1>
-    <p class="lead">Your premier platform for mastering Forex trading. Learn from experts, trade with confidence, and achieve financial freedom.</p>
-    <hr class="my-4">
-    <p>Discover the secrets of successful Forex trading with our comprehensive courses designed for all skill levels.</p>
-    <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Get Started</a>
-  </div>
+<div class="container-fluid px-0">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 slide-in-left">
+                    <h1 class="hero-title">Master Forex Trading</h1>
+                    <p class="hero-subtitle">
+                        Transform your trading journey with our comprehensive courses, expert guidance, 
+                        and cutting-edge strategies designed for traders of all levels.
+                    </p>
+                    <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                        <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">
+                            <i class="fas fa-rocket me-2"></i>Start Learning
+                        </a>
+                        <a class="btn btn-outline-light btn-lg" href="#features" role="button">
+                            <i class="fas fa-play me-2"></i>Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 slide-in-right">
+                    <div class="text-center">
+                        <i class="fas fa-chart-line" style="font-size: 15rem; color: rgba(59, 130, 246, 0.3);"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <h2 class="mt-5 mb-4">Why Choose Algo FX?</h2>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card mb-4">
-        <div class="card-body">
-          <h5 class="card-title">Expert-Led Courses</h5>
-          <p class="card-text">Learn from industry professionals with years of trading experience.</p>
+    <!-- Stats Section -->
+    <section class="py-5" id="stats">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <span class="stats-number">10K+</span>
+                        <span class="stats-label">Students</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <span class="stats-number">50+</span>
+                        <span class="stats-label">Courses</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <span class="stats-number">95%</span>
+                        <span class="stats-label">Success Rate</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <span class="stats-number">24/7</span>
+                        <span class="stats-label">Support</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card mb-4">
-        <div class="card-body">
-          <h5 class="card-title">Flexible Learning</h5>
-          <p class="card-text">Access courses anytime, anywhere, and learn at your own pace.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card mb-4">
-        <div class="card-body">
-          <h5 class="card-title">Community Support</h5>
-          <p class="card-text">Join a community of traders and share insights and strategies.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <h2 class="mt-5 mb-4">Featured Courses</h2>
-  <div class="row">
-    {% for course in courses %}
-    <div class="col-md-4">
-      <div class="card mb-4">
-        {% if course.image %}
-        <img src="{{ course.image.url }}" class="card-img-top" alt="{{ course.title }}">
-        {% endif %}
-        <div class="card-body">
-          <h5 class="card-title">{{ course.title }}</h5>
-          <p class="card-text">{{ course.description|truncatewords:20 }}</p>
-          <a href="{% url 'course_detail' course.pk %}" class="btn btn-primary">View Course</a>
+    <!-- Features Section -->
+    <section class="py-5" id="features">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Why Choose Algo FX?</h2>
+                <p class="lead text-muted">Discover what makes us the premier choice for Forex education</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="card h-100 interactive-hover">
+                        <div class="card-body text-center">
+                            <div class="mb-4">
+                                <i class="fas fa-graduation-cap text-primary" style="font-size: 3rem;"></i>
+                            </div>
+                            <h5 class="card-title">Expert-Led Courses</h5>
+                            <p class="card-text">Learn from industry professionals with years of trading experience and proven track records in the Forex market.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card h-100 interactive-hover">
+                        <div class="card-body text-center">
+                            <div class="mb-4">
+                                <i class="fas fa-clock text-success" style="font-size: 3rem;"></i>
+                            </div>
+                            <h5 class="card-title">Flexible Learning</h5>
+                            <p class="card-text">Access courses anytime, anywhere, and learn at your own pace with our mobile-friendly platform and offline content.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card h-100 interactive-hover">
+                        <div class="card-body text-center">
+                            <div class="mb-4">
+                                <i class="fas fa-users text-warning" style="font-size: 3rem;"></i>
+                            </div>
+                            <h5 class="card-title">Community Support</h5>
+                            <p class="card-text">Join a thriving community of traders, share insights, strategies, and get support from peers and mentors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-  <a href="{% url 'register' %}" class="btn btn-success">Get Started</a>
+    </section>
+
+    <!-- Featured Courses Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Featured Courses</h2>
+                <p class="lead text-muted">Start your journey with our most popular free courses</p>
+            </div>
+            
+            <div class="course-grid">
+                {% for course in courses %}
+                <div class="card course-card h-100">
+                    {% if course.image %}
+                    <img src="{{ course.image.url }}" class="card-img-top" alt="{{ course.title }}">
+                    {% else %}
+                    <div class="card-img-top d-flex align-items-center justify-content-center bg-primary text-white" style="height: 200px;">
+                        <i class="fas fa-chart-bar" style="font-size: 3rem;"></i>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="card-body d-flex flex-column">
+                        <div class="mb-3">
+                            <span class="badge bg-info">{{ course.tier|capfirst }}</span>
+                        </div>
+                        <h5 class="card-title">{{ course.title }}</h5>
+                        <p class="card-text flex-grow-1">{{ course.description|truncatewords:20 }}</p>
+                        <div class="mt-auto">
+                            <a href="{% url 'course_detail' course.pk %}" class="btn btn-primary w-100">
+                                <i class="fas fa-play me-2"></i>Start Course
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12 text-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <i class="fas fa-book text-muted mb-3" style="font-size: 3rem;"></i>
+                            <h5>No courses available yet</h5>
+                            <p class="text-muted">Check back soon for exciting new content!</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="{% url 'register' %}" class="btn btn-success btn-lg">
+                    <i class="fas fa-user-plus me-2"></i>Join Now - It's Free!
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">What Our Students Say</h2>
+                <p class="lead text-muted">Real success stories from our trading community</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            Algo FX completely transformed my understanding of Forex trading. The courses are comprehensive, well-structured, and the community support is incredible.
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <i class="fas fa-user-circle text-primary" style="font-size: 2rem;"></i>
+                            </div>
+                            <div>
+                                <div class="testimonial-author">John Doe</div>
+                                <small class="text-muted">Professional Trader</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            The expert guidance and practical strategies I learned here helped me achieve consistent profits. Best investment I've made in my trading education.
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <i class="fas fa-user-circle text-success" style="font-size: 2rem;"></i>
+                            </div>
+                            <div>
+                                <div class="testimonial-author">Jane Smith</div>
+                                <small class="text-muted">Forex Investor</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            From beginner to confident trader in just 3 months! The step-by-step approach and real-world examples made all the difference.
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <i class="fas fa-user-circle text-warning" style="font-size: 2rem;"></i>
+                            </div>
+                            <div>
+                                <div class="testimonial-author">Mike Johnson</div>
+                                <small class="text-muted">Trading Enthusiast</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="display-5 fw-bold mb-3">Ready to Start Your Trading Journey?</h2>
+            <p class="lead mb-4">Join thousands of successful traders who started with Algo FX</p>
+            <a href="{% url 'register' %}" class="btn btn-light btn-lg">
+                <i class="fas fa-rocket me-2"></i>Get Started Today
+            </a>
+        </div>
+    </section>
 </div>
-
-<div class="container mt-5">
-  <h2 class="mb-4">Testimonials</h2>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card mb-4">
-        <div class="card-body">
-          <p class="card-text">"Algo FX transformed my trading skills. The courses are comprehensive and easy to follow."</p>
-          <footer class="blockquote-footer">John Doe, Trader</footer>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card mb-4">
-        <div class="card-body">
-          <p class="card-text">"The community support is incredible. I've learned so much from other traders."</p>
-          <footer class="blockquote-footer">Jane Smith, Investor</footer>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card mb-4">
-        <div class="card-body">
-          <p class="card-text">"The expert-led courses are worth every penny. Highly recommended!"</p>
-          <footer class="blockquote-footer">Mike Johnson, Forex Enthusiast</footer>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-{% endblock %} 
+{% endblock %}
